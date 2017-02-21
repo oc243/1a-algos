@@ -7,6 +7,6 @@ import java.util.List;
  */
 public interface SortingAlgorithm<T extends Comparable> {
 
-   public List<T> sort(List<T> input);
+   public List<T> sort(List<T> input) throws HeapSizeExceededException;
 
 }

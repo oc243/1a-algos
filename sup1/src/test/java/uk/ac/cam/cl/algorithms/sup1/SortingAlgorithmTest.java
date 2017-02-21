@@ -4,12 +4,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
-/**
- * Created by oliverchick on 24/12/2015.
- */
 @RunWith(Parameterized.class)
 public class SortingAlgorithmTest extends junit.framework.TestCase {
 
@@ -17,17 +16,41 @@ public class SortingAlgorithmTest extends junit.framework.TestCase {
 
     @Test
     public void testSortingAnEmptyListReturnsAnEmptyList() {
-        // An example assertion. This will obviously break.
-        // Replace is with a proper test!
-        assertEquals(true, false);
+        List emptyList = new ArrayList();
+        assertEquals(emptyList, sortingAlgorithm.sort(emptyList));
     }
 
     @Test
     public void testSortingAOneElementListReturnsTheOriginalList() {
-        // TODO: Fill this in
+        List oneElementList = new ArrayList();
+        oneElementList.add(1);
+        assertEquals(oneElementList, sortingAlgorithm.sort(oneElementList));
     }
 
-    // TODO: What else do we need to test?
+    public void testSortingAListReturnsASortedList() {
+        List nonSortedList = new ArrayList();
+        nonSortedList.add(1);
+        nonSortedList.add(2);
+        nonSortedList.add(0);
+        nonSortedList.add(0);
+        nonSortedList.add(5);
+        nonSortedList.add(-1);
+        nonSortedList.add(-4);
+        nonSortedList.add(-2);
+        nonSortedList.add(4);
+
+        assertTrue(sorted(sortingAlgorithm.sort(nonSortedList)));
+    }
+
+    private boolean sorted(List<Comparable> list) {
+        for (int i = 1; i < list.size(); i++) {
+            if (list.get(i).compareTo(list.get(i - 1)) < 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 
     public SortingAlgorithmTest(SortingAlgorithm sortingAlgorithm) {
         this.sortingAlgorithm = sortingAlgorithm;

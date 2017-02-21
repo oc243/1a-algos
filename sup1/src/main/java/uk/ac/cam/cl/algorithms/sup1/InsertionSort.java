@@ -2,15 +2,22 @@ package uk.ac.cam.cl.algorithms.sup1;
 
 import java.util.List;
 
-/**
- * Created by oliverchick on 24/12/2015.
- */
 public class InsertionSort<T extends Comparable> implements SortingAlgorithm<T> {
 
-    /*
-     * Implement insertion sort here
-     */
     public List<T> sort(List<T> input) {
-        return null;
+        // Insert new elements one-by-one in the correct place
+        for (int i = 1; i < input.size(); i++) {
+            int j = i;
+
+            while (j > 0 && input.get(j).compareTo(input.get(j - 1)) < 0) {
+                // Swap the elements
+                T temp = input.get(j);
+                input.set(j, input.get(j - 1));
+                input.set(j - 1, temp);
+                j--;
+            }
+        }
+
+        return input;
     }
 }

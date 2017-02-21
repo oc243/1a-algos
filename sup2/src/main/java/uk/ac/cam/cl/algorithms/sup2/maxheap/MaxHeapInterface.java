@@ -1,8 +1,12 @@
 package uk.ac.cam.cl.algorithms.sup2.maxheap;
 
-public interface MaxHeapInterface {
+import uk.ac.cam.cl.algorithms.sup1.HeapSizeExceededException;
+
+import java.util.Comparator;
+
+public interface MaxHeapInterface<T> {
     // get the maximum value (or exception if empty)
-    public char getMax() throws EmptyHeapException;
+    public T getMax() throws EmptyHeapException;
     // insert a new value into the heap (or exception if full)
-    public void insert(char i) throws HeapSizeExceededException;
+    public void insert(T i) throws HeapSizeExceededException;
 }
